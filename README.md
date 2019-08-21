@@ -10,5 +10,5 @@ Two methods to run (need Python 3 installed):
         (1.1) Enter "python filename" on the command line
             (1.1.1) If this fails, try "python3 filename"
     (2) Run like a bash script
-        (1.1) Enter "chmod u+x filename"
-        (1.2) Enter "./filename"
+        (2.1) Enter "chmod u+x filename"
+        (2.2) Enter "./filename"
