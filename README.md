@@ -1,4 +1,7 @@
 # soft-eng-project-1
+
+Link to Github Page: https://jwspaeth.github.io/soft-eng-project-1/
+
 Sample Problem: Random number generator that sits on a web server
 
 File Descriptions
