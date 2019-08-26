@@ -2,7 +2,7 @@
 
 import random
 
-def generator(lower_bound=1, upper_bound=1000000):
+def generator_wrapper(lower_bound=1, upper_bound=1000000):
     """
     Method
         generator: randomly samples integer between lower bound and upper bound
@@ -14,11 +14,12 @@ def generator(lower_bound=1, upper_bound=1000000):
     Return
         sample: random sample inclusively between lower and upper bound
     """
-    
-    sample = random.randint(lower_bound, upper_bound)
-    
-    return sample
+
+    while True:
+        sample = random.randint(lower_bound, upper_bound)
+        yield sample
 
 if __name__ == "__main__":
-    sample = generator()
+    generator = generator_wrapper()
+    sample = next(generator)
     print("\nRandom sample: {}\n".format(sample))
