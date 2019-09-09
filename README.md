@@ -15,3 +15,12 @@ Two methods to run (need Python 3 installed):
     (2) Run like a bash script
         (2.1) Enter "chmod u+x filename"
         (2.2) Enter "./filename"
+
+
+# Instructions for Setting Compute Engine
+## Install Flask
+## Install TomCat
+## Pull Repository from Github
+## Run it (Separate for Python and Java)
+
+
