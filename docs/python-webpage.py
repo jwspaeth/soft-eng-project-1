@@ -3,7 +3,7 @@
 
 import sys
 import random
-sys.path.append("../webserver-python/")
+sys.path.append("../python-lib/")
 
 from flask import Flask
 app = Flask(__name__)
@@ -31,4 +31,4 @@ def hello_world():
     return "<h1>Random number: {}</h1><h1>Reload the page for a new number!</h1>".format(insert_var)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=9999)
+    app.run(host="0.0.0.0", port=5000)
