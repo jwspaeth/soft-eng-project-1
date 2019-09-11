@@ -17,10 +17,29 @@ Two methods to run (need Python 3 installed):
         (2.2) Enter "./filename"
 
 
-# Instructions for Setting Compute Engine
+# Instructions for Installation and Use
+## Prerequisites for Installation
+    You will need access to the Google Cloud Platform, and a git login and password.
+## Create Google Compute Engine Instance and Pull Repository
+    You will need a Google Cloud instance or shell to run this application. In order to set up an instance, follow the next few steps. 
+    1. Go to the Google Cloud Platform page. 
+        > https://console.cloud.google.com
+    2. Click on the 'Activate Cloud Shell' icon. This will pull up a Google Cloud shell for you to interact with.
+        ![Google Cloud Screenshot](C:\Users\Darby\Documents\Fall 2019\Software Engineering I\Google_Cloud_Settings)
+    3. In the Cloud Shell, we need to access the git repository with all of the code. Copy and paste the line in your Cloud Shell and press Enter:
+        > git clone https://github.com/jwspaeth/soft-eng-project-1.git
+    4. Go into the repository using the command
+        > cd soft-eng-project-1
 ## Install Flask
+    We will need to install Flask. Use the command 
+        > sudo pip3 install Flask
+     on the command line in your shell. 
 ## Install TomCat
-## Pull Repository from Github
 ## Run it (Separate for Python and Java)
-
-
+    To run the Python server, type the following commands into the command line: 
+        > cd docs
+        > ./python-webpage.py
+    This will generate a URL for the webpage in the format 'http://x.x.x.x:5000'.
+    Click this URL to access the webpage.
+    To end this session, type CTRL+C into the command line.
+    Enjoy!
