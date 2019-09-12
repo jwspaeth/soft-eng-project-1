@@ -34,7 +34,124 @@ Two methods to run (need Python 3 installed):
     We will need to install Flask. Use the command 
         > sudo pip3 install Flask
      on the command line in your shell. 
-## Install TomCat
+## Install and Deploy TomCat9
+
+### 1) Add apache-tomcat9 zip file to your directory:
+We will need to install the zip file onto your machine. Go to this website https://tomcat.apache.org/download-90.cgi and download 
+the zip file in Binary Distributions --> Core --> zip. Keep the file in its zipped form and upload it onto your server. Make sure
+to move the file into the directory that you would like.
+
+### 2) Install unzip and unzip the folder:
+After moving the file to your specified directory. We need to install unzip:
+
+    > sudo apt-get update
+    > sudo apt-get install unzip
+    
+Now that we have unzip, we unzip the folder with the following commands
+
+    > unzip <PATH TO FOLDER>/apache-tomcat-9.0.{xx}
+    
+{xx} is just a representation of your version, so type in the correct version you have. Rename the apache-tomcat9-{x} folder 
+to "tomcat" for use of use
+        
+    > mv apache-tomcat-9.0.{xx} tomcat
+    
+### 3) Install Java:
+Next we will need to install java. To check if you already have java, type in:
+       
+    > java -version
+
+If the response to this command is "The program 'java' can be found in the folloing packages" then you do not have java installed.
+To install, run this command:
+
+    > sudo apt-get install default-jre
+    
+This will install the default version of java.
+
+### 4) Setup the configuration files:
+Now we will need to change some of the properties of certain configuration files. First cd into tomcat's conf folder
+
+    > cd <TOMCAT PATH>/tomcat/conf
+        
+We will need to change small parts of server.xml, web.xml, and context.xml:
+
+#### 4.1) Change default port in server.xml:
+Within server.xml, we need to change the default port number. This number is configured to 8080, but you can choose any number
+from 1024 and 65535. Make sure to have the port that you would like open on the server as well. If the port is not open on the 
+server's side, then the page we want to load will not load.
+    
+Locate the following within server.xml:
+    
+    <!-- A "Connector" represents an endpoint by which requests are received
+    and responses are returned. Documentation at :
+    Java HTTP Connector: /docs/config/http.html
+    Java AJP  Connector: /docs/config/ajp.html
+    APR (HTTP/AJP) Connector: /docs/apr.html
+    Define a non-SSL HTTP/1.1 Connector on port 8080
+    -->
+    <Connector port="8080" protocol="HTTP/1.1"
+        connectionTimeout="20000"
+        redirectPort="8443" />
+     
+Change the port within Connector to whatever port you would like. Make sure to save the file after editing
+
+#### 4.2) Enable listings in web.xml:
+Now we will change a small portion of the web.xml file:
+This change will enable directory listing so that we can navigate into our files through the webpage. We will need to 
+change listings from "false" to "true"
+     
+     Locate the following within web.xml:
+     <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>listings</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+      </servlet>
+
+Locate "fasle" under "listings" and change it to "true"
+
+#### 4.3) Add reloadable attribute in context.xml:
+Finally, we will look at context.xml:
+
+We will need to add the reloadable attribute and set it to "true." This will allow us to reload the webpage after the code changes.
+
+Locate <Context> start element, and add the reloadable attribute set to "true"
+    
+    <Context reloadable="true">
+        ......
+        ......
+    </Context>
+
+### 5) Start Tomcat Server
+To start the server, go into the bin folder from the tomcat folder. Issue this command once in that directory:
+
+    > cd tomcat/bin
+    
+To run the startup script, execute this command:
+
+    > ./startup.sh
+
+This will start up the server. Please check the logs to make sure that the server was started correctly. If there are any problems 
+go to the debug section.
+
+#### 5.1) Access server through port number
+
+Go to your local browser as an HTTP client. Issue the URL "http://<IP ADDRESS OF SERVER>:<PORT NUMBER SPECIFIED IN SERVER.XML>. If you see the Apache Tomcat logo and website, then you're all good. If not, go to the debug section.
+
+#### 5.2) Shutdown the server
+To shutdown the server, we need to go back into the bin folder within tomcat. Once in the bin, issue this command:
+
+    > ./shutdown.sh
+    
+### 6) Develop the WebApp
+
 ## Run it (Separate for Python and Java)
     To run the Python server, type the following commands into the command line: 
         > cd docs
