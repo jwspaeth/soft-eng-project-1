@@ -138,19 +138,49 @@ To run the startup script, execute this command:
 
     > ./startup.sh
 
-This will start up the server. Please check the logs to make sure that the server was started correctly. If there are any problems 
-go to the debug section.
+This will start up the server. Please check the logs to make sure that the server was started correctly. If there are any problems go to the debug section (5.4).
 
 #### 5.1) Access server through port number
 
-Go to your local browser as an HTTP client. Issue the URL "http://<IP ADDRESS OF SERVER>:<PORT NUMBER SPECIFIED IN SERVER.XML>. If you see the Apache Tomcat logo and website, then you're all good. If not, go to the debug section.
+Go to your local browser as an HTTP client. Issue the URL
+
+    http://<IP ADDRESS OF SERVER>:<PORT NUMBER SPECIFIED IN SERVER.XML>
+    
+If you see the Apache Tomcat logo and website, then you're all good. If not, go to the debug section.
 
 #### 5.2) Shutdown the server
 To shutdown the server, we need to go back into the bin folder within tomcat. Once in the bin, issue this command:
 
     > ./shutdown.sh
     
-### 6) Develop the WebApp
+#### 5.4) Debug
+
+1. The first problem that might occur is that tomcat won't show up on the URL. This is most likely because the server hasnt started yet. You need to give at least 10 minutes for tomcat to start before anything will actually show up on the webpage.
+
+2. If the server has started, and waited at least 10 minutes, and still nothing shows up. Check the logs. Go to tomcat's home folder and issue this:
+    
+        > cd log
+        > cat <MOST RECENT LOG>
+
+Errors should appear specifying what they are. Here is a common error:
+
+        > SEVERE [main] org.apache.catalina.util.LifecycleBase.handleSubClassException Failed to initialize component [Connector[HTTP/1.1-9999]]
+        > .....
+        > Caused by: java.net.BindException: Address already in use
+
+If this error occurs, then you have more than one instance of tomcat running. All instances need to be killed before you can startup another tomcat instance. Issue this to find out what ports are being used:
+
+        > ps -aux | grep java
+
+This command will show all of the java processes running and their process ids. You need to kill every process by issues this command:
+
+        > kill -9 <PROCESS ID>
+        
+After killing all processes, go back into the bin folder and run a startup and wait at least 10 minutes before accessing the URL. Please check the logs again once you do a second startup. 
+
+### 6) Develop and Deploy the WebApp
+
+To deploy the random number app, we need to first set up a file structure. While in the tomcat home folder cd into the webapps folder
 
 ## Run it (Separate for Python and Java)
     To run the Python server, type the following commands into the command line: 
