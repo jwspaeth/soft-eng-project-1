@@ -182,6 +182,38 @@ After killing all processes, go back into the bin folder and run a startup and w
 
 To deploy the random number app, we need to first set up a file structure. While in the tomcat home folder cd into the webapps folder
 
+Under webapps, create a file structure as represented below:
+
+      >tomcat
+        >bin
+        >conf
+        >webapps
+          ><NAME OF WEBAPP>
+             >WEB_INF
+                >classes
+                
+Under the classes folder, create your Java Servlet. This is where you java code goes. 
+
+Within the java file we need a specific line.
+
+    > @WebServlet("/<NAME>")
+    
+This line will tell us what how to access the servlet from the URL. You will NEED to specify a name within this piece of code.
+
+#### 6.1) Compile Java Servlet and Run
+
+Once the Java file is in the classes folder, we need to compile the file so that the servlet can render it properly. To compile the java file, we need the servlet-api.jar file that tomcat provides. Issue this command to compile your java code:
+
+    >javac -cp .:<PATH TO TOMCAT FOLDER>/tomcat/lib/servlet-api.jar <NAME OF JAVA FILE TO COMPILE>
+
+The outpult will be a class file. 
+
+### 7) Accessing the Deployed WebApp
+
+Run a startup to fire up tomcat. After waiting at least 10 minutes. Access the server by issues the URL as you did previously. This time we need to route to the servlet:
+
+        >http://localhost:<PORT>/<NAME OF WEBAPP>/<WEB SERVLET NAME>
+
 ## Run it (Separate for Python and Java)
     To run the Python server, type the following commands into the command line: 
         > cd docs
