@@ -34,8 +34,16 @@ Two methods to run (need Python 3 installed):
     We will need to install Flask. Use the command 
         > sudo pip3 install Flask
      on the command line in your shell. 
-## Install and Deploy TomCat9
+## Run it in Python
+    To run the Python server, type the following commands into the command line: 
+        > cd docs
+        > ./python-webpage.py
+    This will generate a URL for the webpage in the format 'http://x.x.x.x:5000'.
+    Click this URL to access the webpage.
+    To end this session, type CTRL+C into the command line.
+    Enjoy!
 
+## Install and Deploy TomCat9
 ### 1) Add apache-tomcat9 zip file to your directory:
 We will need to install the zip file onto your machine. Go to this website https://tomcat.apache.org/download-90.cgi and download 
 the zip file in Binary Distributions --> Core --> zip. Keep the file in its zipped form and upload it onto your server. Make sure
@@ -213,12 +221,3 @@ The outpult will be a class file.
 Run a startup to fire up tomcat. After waiting at least 10 minutes. Access the server by issues the URL as you did previously. This time we need to route to the servlet:
 
         >http://localhost:<PORT>/<NAME OF WEBAPP>/<WEB SERVLET NAME>
-
-## Run it (Separate for Python and Java)
-    To run the Python server, type the following commands into the command line: 
-        > cd docs
-        > ./python-webpage.py
-    This will generate a URL for the webpage in the format 'http://x.x.x.x:5000'.
-    Click this URL to access the webpage.
-    To end this session, type CTRL+C into the command line.
-    Enjoy!
