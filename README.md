@@ -1,8 +1,10 @@
 # soft-eng-project-1
 
-Link to Java random number generator webpage: http://35.209.210.228:9999/randomNumber/randNum
+Link to Python AppEngine, random number generator webpage: http://moonlit-sphinx-253117.appspot.com
 
-Link to Python random number generator webpage: http://35.209.210.228:5000
+Link to Java virtual machine, random number generator webpage: http://35.209.210.228:9999/randomNumber/randNum
+
+Link to Python virtual machine, random number generator webpage: http://35.209.210.228:5000
 
 # Instructions for Installation and Use
 ## Prerequisites for Installation
