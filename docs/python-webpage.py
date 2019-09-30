@@ -25,8 +25,8 @@ def hello_world():
     phrase_choice = random.choice(phrase_list)
 
     insert_var = sample
-    if sample % 2 == 0:
-        insert_var = phrase_choice
+    #if sample % 2 == 0:
+    #    insert_var = phrase_choice
 
     return "<h1>Random number: {}</h1><h1>Reload the page for a new number!</h1>".format(insert_var)
 
